@@ -16,6 +16,7 @@ const StyledForm = styled.form`
   padding: 44px 44px 24px;
   max-width: 80%;
   width: 540px;
+  margin: 0 auto;
 `;
 
 const Container = styled.div`
@@ -167,7 +168,6 @@ const StudioForm: React.FC<HTMLAttributes<HTMLFormElement> & { isEdit?: boolean,
   };
   
   return (
-    <Container>
       <StyledForm onSubmit={handleSubmit(onSubmit)} {...props}>
         <h1>{isEdit ? 'Edit Studio' : 'Add New Studio'}</h1>
         <Input {...register("name")} type="text" placeholder="Studio Name"/>
@@ -202,7 +202,6 @@ const StudioForm: React.FC<HTMLAttributes<HTMLFormElement> & { isEdit?: boolean,
         <SaveButton type="submit">Save</SaveButton>
         {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
       </StyledForm>
-    </Container>
   );
 };
 
