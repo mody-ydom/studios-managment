@@ -1,7 +1,9 @@
-# Project Title
+# Studios Management
 
 This repository contains separate projects for the frontend and backend components. Each folder should be treated as an independent project directory. Below are the links to the README files for both directories which contain specific setup instructions and additional information.
 
+## [Walk-through Video](https://somup.com/cZhqjz54mA)
+please watch this short video to get a faster introduction to the project structure
 ## Project Structure
 
 - `/frontend`: Contains all the code and resources for the frontend application `(Nextjs)`.
@@ -39,4 +41,3 @@ Refer to the [Backend README](./backend/README.md) for further instructions.
 ## Support
 
 For support, please refer to the README files within each project directory.
-```

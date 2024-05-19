@@ -87,8 +87,8 @@ python manage.py test
 
 Access API documentation through the following URLs:
 
-- Swagger UI: `http://127.0.0.1:8000/api/schema/swagger-ui/`
-- ReDoc: `http://127.0.0.1:8000/api/schema/redoc/`
+- Swagger UI: http://127.0.0.1:8000/api/schema/swagger-ui/
+- ReDoc: http://127.0.0.1:8000/api/schema/redoc/
 
 ## Project Structure
 

@@ -5,7 +5,7 @@ import { MIN_SILVER, MIN_GOLD, MIN_PLATINUM, MIN_DIAMOND } from "@/src/constants
 const Bronze = css``;
 
 const Silver = css`
-  display: flex;
+  display: block;
   margin: 120px auto 0;
   width: calc(100% - 170px);
   

@@ -17,7 +17,7 @@ export interface paths {
      */
     post: operations["api_accounts_create"];
   };
-  "/api/accounts/{id}/": {
+    "/api/accounts/{id}/": {
     /**
      * Retrieve a user
      * @description Retrieves detailed information about a user. If no ID is provided, it retrieves the current authenticated user.
