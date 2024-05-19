@@ -74,6 +74,15 @@ Start the Django development server to verify the setup:
 python manage.py runserver
 ```
 
+### 5. Run Test
+
+This Project is covered by unit test, run tests by this command 
+
+```bash
+# Run the unit test
+python manage.py test
+```
+
 ## API Documentation
 
 Access API documentation through the following URLs:
