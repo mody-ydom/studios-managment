@@ -1,0 +1,9 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+body{
+    background-color: #F7F8FA !important;
+}
+
+a{
+    text-decoration: none;
+}
