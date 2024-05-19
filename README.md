@@ -2,7 +2,7 @@
 
 This repository contains separate projects for the frontend and backend components. Each folder should be treated as an independent project directory. Below are the links to the README files for both directories which contain specific setup instructions and additional information.
 
-## [Walk-through Video](https://somup.com/cZhqjz54mA)
+## [Walk-through Video](https://go.screenpal.com/watch/cZhqjCVLUnY)
 please watch this short video to get a faster introduction to the project structure
 ## Project Structure
 
