@@ -36,7 +36,7 @@ const LoginPage = () => {
       dispatch(setUser(data));
       localStorage.setItem("accessToken", data.tokens.access)
       localStorage.setItem("refreshToken", data.tokens.refresh)
-      router.push("/studios"); // Redirect to account page
+      router.push(data.user.user_type!=='studio_owner'?"/studios":"/studios/mine"); // Redirect to account page
     } catch (error) {
       console.error("Login failed:", error);
       // Optionally update UI to show error messages

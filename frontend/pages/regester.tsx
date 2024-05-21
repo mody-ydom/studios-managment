@@ -58,7 +58,7 @@ const RegisterPage = () => {
           tokens: response.tokens,
         })
       );
-      router.push("/studios"); // Redirect to account page
+      router.push(response.user.user_type!=='studio_owner'?"/studios":"/studios/mine"); // Redirect to account page
       console.log("Registration successful", response);
       // Redirect or update UI here
     } catch (error) {

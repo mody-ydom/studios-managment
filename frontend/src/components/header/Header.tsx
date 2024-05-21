@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
   
   
   const pages = [
-    {label:'Studios', href:'/studios',show:true},
+    {label:'All Studios', href:'/studios',show:user?.user_type!=='studio_owner'},
     {label:'My Studios', href:'/studios/mine',show:user?.user_type==='studio_owner'},
     {label:'Create Studio', href:'/studios/create',show:user?.user_type!=='customer'},
     {label:'Reservations', href:'/reservations',show:true},
