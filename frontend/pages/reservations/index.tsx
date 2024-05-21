@@ -34,10 +34,11 @@ const ReservationsPage: React.FC = () => {
           studio?: number | undefined;
           upcoming?: boolean | undefined;
         } = {
-          past: true, status: "active",
+          upcoming: true, status: "active",
           page: +(page as string) || undefined,
           page_size: +(page_size as string) || undefined,
         };
+        console.log(user);
         if (user?.id && user?.user_type) {
           const type = user.user_type === "customer" ? "customer" : "owner";
           query[type] = user.id;
@@ -52,7 +53,7 @@ const ReservationsPage: React.FC = () => {
       }
       setLoading(false);
     };
-    
+    console.log(user)
     if (router.isReady && user?.id) {
       fetchData();
     }

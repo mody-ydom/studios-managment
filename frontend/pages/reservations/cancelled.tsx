@@ -36,7 +36,7 @@ const ReservationsPage: React.FC = () => {
           studio?: number | undefined;
           upcoming?: boolean | undefined;
         } = {
-          past: true, status: "active",
+          status: "cancelled",
           page: +(page as string) || undefined,
           page_size: +(page_size as string) || undefined,
         };
