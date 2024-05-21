@@ -41,8 +41,8 @@ const ReservationsPage: React.FC = () => {
           page_size: +(page_size as string) || undefined,
         };
         if (user?.id && user?.user_type) {
-          const type = user.user_type === "customer" ? "customer" : "owner";
-          query[type] = user.id;
+          const type = user?.user_type === "customer" ? "customer" : "owner";
+          query[type] = user?.id;
         }
         
         const {data} = await listReservations({query});

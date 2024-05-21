@@ -40,8 +40,8 @@ const ReservationsPage: React.FC = () => {
         };
         console.log(user);
         if (user?.id && user?.user_type) {
-          const type = user.user_type === "customer" ? "customer" : "owner";
-          query[type] = user.id;
+          const type = user?.user_type === "customer" ? "customer" : "owner";
+          query[type] = user?.id;
         }
         
         const { data } = await listReservations({ query });

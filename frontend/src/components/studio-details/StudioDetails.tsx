@@ -20,8 +20,6 @@ import {Rating} from "@mui/material";
 import {SStudioDetailsRating} from "./styles/SStudioDetailsRating";
 import useMedia from "@/src/hooks/useMedia";
 import {BREAKPOINTS} from "@/src/constants/styles/mediaquerys";
-import CustomDateRangePicker from "../form/DatePicker";
-import {Range} from "react-date-range";
 
 const googleMapsUrl = (destinationAddress: string) =>
   `https://www.google.com/maps/dir/?api=1&destination=${destinationAddress}`;
@@ -69,7 +67,7 @@ export const StudioDetails: React.FC<IStudio> = ({
                 <SStudioDetailsBookBtn>Book Studio</SStudioDetailsBookBtn>
               </Link>
               :
-              ((user.user_type==='admin' || user?.id===owner)&&<Link passHref href={`/studios/${id}/edit/`}>
+              ((user?.user_type==='admin' || user?.id===owner)&&<Link passHref href={`/studios/${id}/edit/`}>
               <SStudioDetailsBookBtn>Edit</SStudioDetailsBookBtn>
               </Link>)
             }
@@ -85,7 +83,7 @@ export const StudioDetails: React.FC<IStudio> = ({
               />{" "}
               (195)
             </SStudioDetailsRating>
-            {(user.user_type==='admin' || user?.id===owner) &&
+            {(user?.user_type==='admin' || (user?.user_type==='studio_owner'&&user?.id===owner)) &&
                 <SStudioDetailsBookBtn as={'button'} onClick={handleDelete} outlined>Delete</SStudioDetailsBookBtn>
             }
           </>

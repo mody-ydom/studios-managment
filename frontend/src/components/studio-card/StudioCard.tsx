@@ -27,7 +27,7 @@ export const StudioCard: React.FC<
             <LocationOnIcon />
             {location}
           </SStudioCardLocation>
-          {user.user_type==='customer'&&<SStudioCardBookBtn>Book Now</SStudioCardBookBtn>}
+          {user?.user_type==='customer'&&<SStudioCardBookBtn>Book Now</SStudioCardBookBtn>}
         </SStudioCardBottomPart>
       </Link>
     </SStudioCard>

@@ -19,7 +19,7 @@ const StudioPage: React.FC = () => {
   const {user} = useSelector((state: RootState) => state.user);
   
   useEffect(() => {
-    (user && user.user_type !== 'studio_owner') && router.replace('/404');
+    (user && user?.user_type !== 'studio_owner') && router.replace('/404');
     
     const fetchData = async () => {
       setLoading(true);
