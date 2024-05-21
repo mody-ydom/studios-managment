@@ -1,4 +1,6 @@
+import {RootState} from "@/store";
 import React, { PropsWithChildren } from "react";
+import {useSelector} from "react-redux";
 import { SStudioCard } from "./styles/SStudioCard";
 import { components } from "@/ts-types";
 import { SStudioCardImage } from "./styles/SStudioCardImage";
@@ -13,6 +15,7 @@ import { IStudio } from "@/src/constants/types";
 export const StudioCard: React.FC<
   PropsWithChildren<IStudio>
 > = ({ name, location, images, id, ...props }) => {
+  const {user} = useSelector((state: RootState) => state.user);
   return (
     <SStudioCard>
       <Link passHref href={`/studios/${id}/`}>
@@ -25,7 +28,7 @@ export const StudioCard: React.FC<
             <LocationOnIcon />
             {location}
           </SStudioCardLocation>
-          <SStudioCardBookBtn>Book Now</SStudioCardBookBtn>
+          {user.user_type==='customer'&&<SStudioCardBookBtn>Book Now</SStudioCardBookBtn>}
         </SStudioCardBottomPart>
       </Link>
     </SStudioCard>

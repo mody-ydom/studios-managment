@@ -33,6 +33,7 @@ export const StudioDetails: React.FC<IStudio> = ({
                                                    images,
                                                    capacity,
                                                    reserved_periods,
+  owner,
                                                    ...props
                                                  }) => {
   const {user} = useSelector((state: RootState) => state.user);
@@ -68,9 +69,9 @@ export const StudioDetails: React.FC<IStudio> = ({
                 <SStudioDetailsBookBtn>Book Studio</SStudioDetailsBookBtn>
               </Link>
               :
-              <Link passHref href={`/studios/${id}/edit/`}>
-                <SStudioDetailsBookBtn>Edit</SStudioDetailsBookBtn>
-              </Link>
+              ((user.user_type==='admin' || user?.id===owner)&&<Link passHref href={`/studios/${id}/edit/`}>
+              <SStudioDetailsBookBtn>Edit</SStudioDetailsBookBtn>
+              </Link>)
             }
             <div style={{width: '100%'}}/>
             <SStudioDetailsRating>
@@ -84,7 +85,7 @@ export const StudioDetails: React.FC<IStudio> = ({
               />{" "}
               (195)
             </SStudioDetailsRating>
-            {['studio_owner', 'admin'].includes(user?.user_type) &&
+            {(user.user_type==='admin' || user?.id===owner) &&
                 <SStudioDetailsBookBtn as={'button'} onClick={handleDelete} outlined>Delete</SStudioDetailsBookBtn>
             }
           </>
