@@ -2,7 +2,6 @@ import {RootState} from "@/store";
 import React, { PropsWithChildren } from "react";
 import {useSelector} from "react-redux";
 import { SStudioCard } from "./styles/SStudioCard";
-import { components } from "@/ts-types";
 import { SStudioCardImage } from "./styles/SStudioCardImage";
 import { SStudioCardName } from "./styles/SStudioCardName";
 import { SStudioCardLocation } from "./styles/SStudioCardLocation";

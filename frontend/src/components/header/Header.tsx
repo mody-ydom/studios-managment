@@ -1,8 +1,10 @@
 import LogoutButton from "@/src/components/LogoutButton";
+import {RootState} from "@/store";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import React from 'react';
+import {useSelector} from "react-redux";
 import {SHeader} from './styles/SHeader';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,16 +20,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = [
-  {label:'Studios', href:'/studios'},
-  {label:'My Studios', href:'/studios/mine'},
-  {label:'Create Studio', href:'/studios/create'},
-  {label:'Reservations', href:'/reservations'},
-  {label:'Past Reservations', href:'/reservations/past'},
-  {label:'cancelled Reservations', href:'/reservations/cancelled'},
-  
-  
-];
 // const settings = [['Logout'];
 
 const Logo = styled.img`
@@ -40,6 +32,17 @@ export const Header: React.FC = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   
+  const {user} = useSelector((state: RootState) => state.user);
+  
+  
+  const pages = [
+    {label:'Studios', href:'/studios',show:true},
+    {label:'My Studios', href:'/studios/mine',show:user?.user_type==='studio_owner'},
+    {label:'Create Studio', href:'/studios/create',show:user?.user_type!=='customer'},
+    {label:'Reservations', href:'/reservations',show:true},
+    {label:'Past Reservations', href:'/reservations/past',show:true},
+    {label:'cancelled Reservations', href:'/reservations/cancelled',show:true},
+  ];
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -119,7 +122,7 @@ export const Header: React.FC = () => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
               >
-                {pages.map(({label, href}) => (
+                {pages.filter(({show})=>show).map(({label, href}) => (
                   <MenuItem key={href} onClick={handleCloseNavMenu}>
                     <Link href={href}><Typography textAlign="center" sx={{color: '#1EABE3', textDecoration:pathname===href?'underline':'none'}}>{label}</Typography></Link>
                   </MenuItem>
