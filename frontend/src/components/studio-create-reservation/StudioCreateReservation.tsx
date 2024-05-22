@@ -35,7 +35,7 @@ const router = useRouter();
 
 const handleBook = async ()=>{
 if(!user)return;
-   createReservation({body:{start:(startDate as Date).toISOString(), end:(endDate as Date).toISOString(), studio:id, customer: 9 , id:0 }}).then((res)=>{
+   createReservation({body:{start:(startDate as Date).toISOString(), end:(endDate as Date).toISOString(), studio:id, customer: user.id , id:0 }}).then((res)=>{
   res.status==201 && router.push('/reservations');
    }).catch(error=>{
      console.log(error)
