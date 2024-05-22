@@ -1,6 +1,6 @@
 import {createStudio, updateStudio} from "@/services/apiServices";
 import {inter} from "@/src/theme";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 import React, {useState} from 'react';
 import styled from '@emotion/styled';
 import {HTMLAttributes} from 'react';
@@ -112,6 +112,7 @@ const schema = yup.object({
 }).required();
 
 const StudioForm: React.FC<HTMLAttributes<HTMLFormElement> & { isEdit?: boolean, initialValues?:{name:string, location: string, capacity:number, id:number, images:{id:number,image:string}[]} }> = ({ isEdit,initialValues, ...props }) => {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors }, setValue } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {

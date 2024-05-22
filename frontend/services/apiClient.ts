@@ -73,7 +73,10 @@ const apiClient = axios.create({
   
   function redirectToLogin() {
     // Redirect user to the login page
-    window.location.href = '/login';
+    if (global?.location?.href) {
+      global.location.href = '/login';
+  
+    }
   }
   
   export default apiClient;

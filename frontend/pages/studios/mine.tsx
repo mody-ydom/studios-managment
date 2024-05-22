@@ -42,6 +42,7 @@ const {user} = useSelector((state: RootState)=>state.user);
     const fetchData = async () => {
       setLoading(true);
       try {
+        console.log(router.query)
         const { capacity, location, page, page_size } = router.query;
         const query = {
           capacity: +(capacity as string) || undefined,

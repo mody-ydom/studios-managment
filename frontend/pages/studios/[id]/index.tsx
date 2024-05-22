@@ -36,7 +36,11 @@ const StudioPage: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  return studio?<PageWrapper><StudioDetails {...studio}/></PageWrapper>:<div>Loading</div>
+  return studio?
+    <PageWrapper>
+    <StudioDetails {...studio}/>
+  </PageWrapper>
+    :<div>Loading</div>
   
 }
 

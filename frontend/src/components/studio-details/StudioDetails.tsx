@@ -1,6 +1,6 @@
 import {deleteStudio} from "@/services/apiServices";
 import {RootState} from "@/store";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 import React, {PropsWithChildren, useState} from "react";
 import {useSelector} from "react-redux";
 import {SStudioDetails} from "./styles/SStudioDetails";
@@ -38,12 +38,12 @@ export const StudioDetails: React.FC<IStudio> = ({
   
   const [rating, setRating] = useState(4.5);
   const media = useMedia();
+  const router = useRouter();
   const handleDelete = () => {
     deleteStudio({params: {id}}).then(() => {
       router.replace('/studios/mine/')
     }).catch(console.error)
   }
-  
   return (
     <SStudioDetails>
       <SStudioDetailsMainImage>
@@ -103,7 +103,7 @@ export const StudioDetails: React.FC<IStudio> = ({
           </SStudioDetailsDirections>
         </SStudioDetailsLocation>
         <SStudioDetailsSliderImages></SStudioDetailsSliderImages>
-        {media === BREAKPOINTS.BRONZE && (
+        {media === BREAKPOINTS.BRONZE && user?.user_type==='customer' &&(
           <Link passHref href={`/studios/${id}/book/`}>
             <SStudioDetailsBookBtn>Book Studio</SStudioDetailsBookBtn>
           </Link>

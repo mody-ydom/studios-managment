@@ -1,11 +1,8 @@
-import {listStudios, retrieveStudio} from "@/services/apiServices";
+import {retrieveStudio} from "@/services/apiServices";
 import StudioForm from "@/src/components/form/StudioForm";
 import {PageWrapper} from "@/src/components/page-wrapper/PageWrapper";
-import {StudioCreateReservation} from "@/src/components/studio-create-reservation/StudioCreateReservation";
-import {StudioDetails} from "@/src/components/studio-details/StudioDetails";
 import {IStudio} from "@/src/constants/types";
 import {RootState} from "@/store";
-import {GetStaticPaths, GetStaticProps} from "next";
 import {useRouter} from "next/router";
 import {useState, useEffect} from "react";
 import {useSelector} from "react-redux";
@@ -19,9 +16,10 @@ const StudioPage: React.FC = () => {
   const {user} = useSelector((state: RootState) => state.user);
   
   useEffect(() => {
-    (user && user?.user_type !== 'studio_owner') && router.replace('/404');
     
+
     const fetchData = async () => {
+    
       setLoading(true);
       try {
         const {id} = router.query;
@@ -40,6 +38,11 @@ const StudioPage: React.FC = () => {
       fetchData();
     }
   }, [router.isReady, router.query]);
+  useEffect(() => {
+    (user?.user_type === 'customer') && router.replace('/studios');
+    (user?.user_type === 'studio_owner' && user?.id && studio?.owner&&user?.id !== studio?.owner) && router.replace('/studios/mine');
+  
+  }, [user?.id,studio?.id]);
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
